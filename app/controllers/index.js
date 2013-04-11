@@ -10,6 +10,7 @@ exports.index = function(req, res){
 
     renderer('#ffd5e5', '#ff2a7f', function(err, result) {
 
+        console.log(err);
         model.src0 = result;
 
         renderer('#d5f6ff', '#3aacc9', function(err, result) {
