@@ -1,7 +1,9 @@
 doctype 5
-html
+html(lang="en")
   head
     title= 'GitHubMon'
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/style.css')
   body
-    block content
+    div.container-fluid
+        block content

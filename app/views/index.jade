@@ -1,4 +1,15 @@
 extends layout
 
 block content
-  | Hooray for GitHubMon!
+
+    h1.text-center Hooray for GitHubMon!
+
+    p.text-center
+        img#creature(height="122")
+
+    form(action="/", method="GET")#creature-form.text-center
+        div.input-append
+          input#repo.input-xxlarge(type="text", value="https://github.com/ninjascribble/githubmon", placeholder="https://github.com/...")
+          button.btn.btn-primary Sweet!
+
+    script(src='/js/index.js')
