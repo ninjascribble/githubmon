@@ -1,19 +1,15 @@
-var renderer = require('../shapes/gumdrop.js')
-  , github = 'https://github.com/';
+var creature = require('../creature');
 
 exports.index = function(req, res) {
     res.render('index');
-}
+};
 
 exports.creature = function(req, res) {
 
     var user = req.param('user')
-      , project = req.param('project')
-      , path = github + user + '/' + project;
+      , project = req.param('project');
 
-    console.log(path);
-
-    renderer('#ffd5e5', '#ff2a7f', function(err, result) {
+    creature(user, project, function(err, result) {
         res.type('png');
         res.send(result);
     });
