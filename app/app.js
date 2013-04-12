@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
 var express     = require('express')
   , controllers = require('./controllers')
   , http        = require('http')
@@ -26,6 +21,7 @@ app.configure('development', function(){
 });
 
 app.get('/', controllers.index);
+app.get('/creature/:user/:project.png', controllers.creature);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));

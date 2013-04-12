@@ -1,27 +1,20 @@
-var renderer = require('../shapes/gumdrop.js');
+var renderer = require('../shapes/gumdrop.js')
+  , github = 'https://github.com/';
 
-exports.index = function(req, res){
+exports.index = function(req, res) {
+    res.render('index');
+}
 
-    var model = {
-        src0: null,
-        src1: null,
-        src2: null
-    }
+exports.creature = function(req, res) {
+
+    var user = req.param('user')
+      , project = req.param('project')
+      , path = github + user + '/' + project;
+
+    console.log(path);
 
     renderer('#ffd5e5', '#ff2a7f', function(err, result) {
-
-        console.log(err);
-        model.src0 = result;
-
-        renderer('#d5f6ff', '#3aacc9', function(err, result) {
-
-            model.src1 = result;
-
-            renderer('#d7f4d7', '#7c916f', function(err, result) {
-
-                model.src2 = result;
-                res.render('index', model);
-            })
-        })
+        res.type('png');
+        res.send(result);
     });
 };
