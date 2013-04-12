@@ -10,7 +10,13 @@ exports.creature = function(req, res) {
       , project = req.param('project');
 
     creature(user, project, function(err, result) {
-        res.type('png');
-        res.send(result);
+
+        if (err) {
+          res.send(404);
+        }
+        else {
+          res.type('png');
+          res.send(result);
+        }
     });
 };
