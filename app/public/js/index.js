@@ -4,7 +4,7 @@
     var creature     = document.getElementById('creature')
       , creatureForm = document.getElementById('creature-form')
       , repoField    = document.getElementById('repo')
-      , matcher      = /github\.com\/([\w]*)\/([\w]*)/;
+      , matcher      = /github\.com\/([\w-_\.]*)\/([\w-_\.]*)/;
 
     creatureForm.addEventListener('submit', updateCreature);
     updateCreature();
