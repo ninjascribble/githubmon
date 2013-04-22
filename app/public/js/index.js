@@ -17,7 +17,7 @@
         var matches = matcher.exec(repoField.value);
 
         if (matches && matches.length >= 3) {
-            creature.src = ['creature', matches[1], matches[2]].join('/') + '.png';
+            creature.src = ['creature', matches[1], matches[2]].join('/') + '.gif';
         }
     };
 }(window));

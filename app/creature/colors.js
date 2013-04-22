@@ -1,26 +1,18 @@
 var fill   = 0
   , stroke = 1
   , languages = {
-    "default"   : ['#ffd5e5ff', '#ff2a7fff']
-  , "javascript": ['#f0db4fff', '#323330ff']
-  , "ruby"      : ['#c87358ff', '#a8222bff']
-  , "java"      : ['#5281a0ff', '#f8981dff']
-  , "python"    : ['#ffdb4cff', '#376a94ff']
-  , "shell"     : ['#404040ff', '#07ac13ff']
-  , "php"       : ['#9999ccff', '#666699ff']
-  , "c"         : ['#a8b9ccff', '#1b75b3ff']
-  , "c++"       : ['#f8f8f8ff', '#0645b1ff']
+    "default"   : ['#ffffff', '#f8f8c8', '#d8c8b0', '#b09898', '#886080', '#403040', '#85c7f7']
+  , "javascript": ['#ffffff', '#f4e9b2', '#e8d364', '#ac9f58', '#706b4c', '#343740', '#85c7f7']
+  , "ruby"      : ['#ffffff', '#f5d3d9', '#ee646c', '#a54466', '#733a53', '#403040', '#85c7f7']
+  , "java"      : ['#ffffff', '#f8981d', '#000000', '#000000', '#000000', '#000000', '#85c7f7']
+  , "python"    : ['#ffffff', '#376a94', '#000000', '#000000', '#000000', '#000000', '#85c7f7']
+  , "shell"     : ['#ffffff', '#07ac13', '#000000', '#000000', '#000000', '#000000', '#85c7f7']
+  , "php"       : ['#ffffff', '#666699', '#000000', '#000000', '#000000', '#000000', '#85c7f7']
+  , "c"         : ['#ffffff', '#1b75b3', '#000000', '#000000', '#000000', '#000000', '#85c7f7']
+  , "c++"       : ['#ffffff', '#0645b1', '#000000', '#000000', '#000000', '#000000', '#85c7f7']
 };
 
-exports.fill = function(language) {
-    return getColorByLanguage(language, fill);
-};
-
-exports.stroke = function(language) {
-    return getColorByLanguage(language, stroke);
-};
-
-function getColorByLanguage(language, index) {
+module.exports = function(language) {
     var color = languages[language.toLowerCase()];
-    return (color) ? color[index] : languages['default'][index];
+    return (color) ? color : languages['default'];
 }

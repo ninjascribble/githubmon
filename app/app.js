@@ -21,7 +21,9 @@ app.configure('development', function(){
 });
 
 app.get('/', controllers.index);
-app.get('/creature/:user/:project.png', controllers.creature);
+app.get('/test', controllers.test);
+app.get('/creature/:user/:project/:language.gif', controllers.creature);
+app.get('/creature/:user/:project.gif', controllers.creature);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
