@@ -1,16 +1,22 @@
-var githubapi = require('github')
-  , github    = new githubapi({ version: '3.0.0', timeout: 5000 })
-  , magic     = require('imagemagick')
-  , colors    = require('./colors.js')
-  , shapes    = require('./shapes.js');
-
-module.exports = function(user, project, callback, lang) {
-
-    var sprites = [
+var githubapi  = require('github')
+  , github     = new githubapi({ version: '3.0.0', timeout: 5000 })
+  , magic      = require('imagemagick')
+  , colors     = require('./colors.js')
+  , shapes     = require('./shapes.js')
+  , one_week   = 7 * 24 * 60 * 60 * 1000
+  , four_weeks = 4 * one_week
+  , sprites    = [
         'resources/gumdrop-normal.gif'
       , 'resources/gumdrop-jumping.gif'
       , 'resources/gumdrop-sleeping.gif'
     ];
+
+module.exports = function(user, project, callback, lang) {
+
+    var sprite = sprites[0]
+      , now    = Date.now()
+      , then   = 0
+      , diff   = 0;
 
     if (lang) {
         convert(sprites[ Math.random() * sprites.length << 0 ], lang, callback)
@@ -21,8 +27,21 @@ module.exports = function(user, project, callback, lang) {
             // Return error body if the API call fails for whatever reason
             if (err || !result) callback(err, null);
 
+            then = new Date(result.updated_at).getTime();
+            diff = now - then;
+
+            // Active projects are jumping for joy!
+            if (diff < one_week) {
+                sprite = sprites[1]
+            }
+
+            // Inactive projects are sleeping...
+            else if (diff > four_weeks) {
+                sprite = sprites[2];
+            }
+
             // Otherwise go ahead and render the lil' guy
-            convert('resources/gumdrop-normal.gif', result.language, callback)            
+            convert(sprite, result.language, callback)            
         });
     }
 };
