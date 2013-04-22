@@ -25,7 +25,7 @@ module.exports = function(user, project, callback, lang) {
         github.repos.get({ user: user, repo: project}, function(err, result) {
 
             // Return error body if the API call fails for whatever reason
-            if (err || !result) callback(err, null);
+            if (err || !result || result.code == 404) callback(err, null);
 
             then = new Date(result.updated_at).getTime();
             diff = now - then;
